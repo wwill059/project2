@@ -1,0 +1,28 @@
+Reminder Tracker
+
+Overview
+In our current day the need for an advanced to do list has become an ever-increasing tool to have. With the current to do applications 
+that are on the market they hold a few limitations in their usage. For one they do not have the ability to record multiple task within a 
+single goal. This can lead to loss of time. One of the downsides to having these tools is that they do not provide any integration for goals. 
+With our new to do application we aim to solve these problems by providing a robust system to assimilate various goals down to simplify tasks 
+to all these tasks and to show the completion of these tasks and the goals themselves.
+
+Business Rules
+
+I. Information
+A user first signs on the to the application. If the user does not have an account set up, they would have to register for an account in our system.
+ A user would then add goals to their accounts. The goal name cannot be blank. The user is then to a second screen to fill out the various tasks 
+associated with the goal. User then insert each task with their respected name, description, and deadline/duration. 
+
+II. Displaying Information
+The task is then displayed on the screen, with the completion bar on the goal. The completion bar next to the goal will display the current 
+completion percentage.  Each task would appear underneath the goal with their respected duration/deadline in the fields and would include a 
+completed task button and a delay task button. When the completed task button is clicked, the task would be marked completed and would be grayed 
+out. Clicking on the delay button would open an edit timeline screen that would allow you to edit the time line. Editing the time line in one task 
+would update the rest of the tasks if they use the duration option. 
+
+III. Completion of goals
+After each task is completed, the user can mark off that specific task on the screen. Afterwards, the completion bar would increase, and the task 
+would be marked as completed within the goal sub menu.  When either all the tasks or the goal is completed, the user can check off the entire goal 
+from the list. That goal is then moved to the completed/archive list.
+
