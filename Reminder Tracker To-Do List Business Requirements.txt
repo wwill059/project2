@@ -21,8 +21,14 @@ completed task button and a delay task button. When the completed task button is
 out. Clicking on the delay button would open an edit timeline screen that would allow you to edit the time line. Editing the time line in one task 
 would update the rest of the tasks if they use the duration option. 
 
-III. Completion of goals
+III. Completion of Goals
 After each task is completed, the user can mark off that specific task on the screen. Afterwards, the completion bar would increase, and the task 
 would be marked as completed within the goal sub menu.  When either all the tasks or the goal is completed, the user can check off the entire goal 
 from the list. That goal is then moved to the completed/archive list.
 
+IV. Organization Accounts
+Users will be able to create special accounts for organizations they belong to. The creator will become the administrator of that
+account and will be able to create goals, complete tasks, and invite other users to join the organization's group account.  Non-admin
+users admitted to the group will be able to see tasks for any groups they are members of and will be able to submit task completion for
+approval. Admins will be able to see who makes claims for completed tasks and will be able to approve or deny claims. Group tasks will 
+be marked as such with the name of the organization.
