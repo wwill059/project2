@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+		<hibernate-configuration>
+			<session-factory>
+				<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+				<!-- DB Dialect -->
+				<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+				<!-- Datasource Information -->
+				<property name="hibernate.connection.url">jdbc:oracle:thin:@waynezackproject2.clnqlvccw020.us-east-2.rds.amazonaws.com</property>
+				<property name="hibernate.connection.username">BANK_DB</property>
+				<property name="hibernate.connection.password">PASSWORD</property>
+				
+				<property name="hibernate.connection.pool_size">10</property>
+				
+				<property name="show_sql">true</property>
+				<property name="hibernate.format_sql">true</property>
+				
+				<!-- Level 2 Cache -->
+				<property name="hibernate.cache.use_second_level_cache">true</property>
+				<!-- Specify Caching Provider -->
+				<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+				
+				<!-- For mapping with xml -->
+				<!-- <mapping resource="honeypot.hbm.xml"/> -->
+				
+				<mapping class="com.revature.pojos.goals.Goal"/>
+				<mapping class="com.revature.pojos.goals.Task"/>
+				<mapping class="com.revature.pojos.user.Account"/>
+				<mapping class="com.revature.pojos.user.Organization"/>
+				
+			</session-factory>
+		</hibernate-configuration>
