@@ -1,0 +1,20 @@
+<nav>
+  <a routerLink="home">Home</a>
+  <a routerLink="goal">Goals</a>
+</nav>
+<!-- Section: main section -->
+<section class="section">
+  <mat-card class="z-index-2">
+    <mat-card-title>Home Page</mat-card-title>
+    <mat-card-subtitle>The home page for your goals &amp; tasks</mat-card-subtitle>
+    <mat-card-content>
+      <div *ngFor="let goal of goals">
+        <mat-card class="light-blue darken-2 z-index-3">
+          <h1 class="orange white-text lighten-1">{{goal.title}}</h1>
+          <h4 class="orange white-text lighten-1">{{goal.date}}</h4>
+          <button mat-raised-button (click)="viewGoal()">View Goal</button>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
