@@ -34,7 +34,7 @@ hs_err_pid*
 /out-tsc
 
 # dependencies
-/node_modules
+angular/node_modules/*
 
 # IDE - VSCode
 .vscode/*
