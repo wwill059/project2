@@ -1,9 +1,20 @@
 package com.revature.pojos.goals;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.revature.pojos.user.Account;
+import com.revature.pojos.user.Organization;
 
 
 
@@ -11,12 +22,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="GOALS")
 public class Goal {
-
+	
 	@Id
-	@Column(name="ID")
+	@Column(name="GOALID")
 //	@SequenceGenerator(name="BEARID_SEQ", sequenceName="BEARID_SEQ")
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BEARID_SEQ")	
-	private int id;
+	private int goalId;
 	
 	@Column(name="GOALNAME")
 	private String goalName;
@@ -31,11 +42,25 @@ public class Goal {
 	private int orgId;
 	
 	
-	public int getId() {
-		return id;
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "GOALS_TASKS", joinColumns = { @JoinColumn(name = "GOALID") }, inverseJoinColumns = {
+			@JoinColumn(name = "TASKID") })
+	private Set<Task> tasks;
+	
+	
+	@ManyToOne
+    @JoinColumn(name = "USERID")
+    private Account user;
+	
+	@ManyToOne
+    @JoinColumn(name = "ORGID")
+    private Organization organization;
+
+	public int getGoalId() {
+		return goalId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setGoalId(int goalId) {
+		this.goalId = goalId;
 	}
 	public String getGoalName() {
 		return goalName;
@@ -61,18 +86,47 @@ public class Goal {
 	public void setOrgId(int orgId) {
 		this.orgId = orgId;
 	}
-	public Goal() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	
+	public Account getUser() {
+		return user;
 	}
-	public Goal(int id, String goalName, boolean isCompleted, int userId, int orgId) {
+	public void setUser(Account user) {
+		this.user = user;
+	}
+	public Organization getOrganization() {
+		return organization;
+	}
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
+	}
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+	
+	
+	
+	public Goal(int goalId, String goalName, boolean isCompleted, int userId, int orgId, Set<Task> tasks, Account user,
+			Organization organization) {
 		super();
-		this.id = id;
+		this.goalId = goalId;
 		this.goalName = goalName;
 		this.isCompleted = isCompleted;
 		this.userId = userId;
 		this.orgId = orgId;
+		this.tasks = tasks;
+		this.user = user;
+		this.organization = organization;
 	}
+	public Goal() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
+
 	
 }

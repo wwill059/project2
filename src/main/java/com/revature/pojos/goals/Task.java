@@ -5,7 +5,11 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.revature.pojos.user.Organization;
 
 
 @Entity
@@ -13,10 +17,10 @@ import javax.persistence.Table;
 public class Task {
 
 	@Id
-	@Column(name="ID")
+	@Column(name="TASKID")
 //	@SequenceGenerator(name="BEARID_SEQ", sequenceName="BEARID_SEQ")
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BEARID_SEQ")
-	private int id;
+	private int taskId;
 	
 	@Column(name="TASKNAME")
 	private String taskName;
@@ -30,12 +34,15 @@ public class Task {
 	@Column(name="GOALID")
 	private int goalId;
 	
+	@ManyToOne
+    @JoinColumn(name = "GOALID")
+    private Goal goal;
 	
-	public int getId() {
-		return id;
+	public int getTaskId() {
+		return taskId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
 	}
 	public String getTaskName() {
 		return taskName;
@@ -61,13 +68,23 @@ public class Task {
 	public void setGoalId(int goalId) {
 		this.goalId = goalId;
 	}
-	public Task(int id, String taskName, Date deadline, boolean isCompleted, int goalId) {
+	
+	public Goal getGoal() {
+		return goal;
+	}
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}
+	
+	
+	public Task(int taskId, String taskName, Date deadline, boolean isCompleted, int goalId, Goal goal) {
 		super();
-		this.id = id;
+		this.taskId = taskId;
 		this.taskName = taskName;
 		this.deadline = deadline;
 		this.isCompleted = isCompleted;
 		this.goalId = goalId;
+		this.goal = goal;
 	}
 	public Task() {
 		super();
