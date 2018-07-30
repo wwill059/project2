@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  public viewGoal(goal: Goal) {
-    this.goalServ.viewGoal(goal);
+  public viewGoal(id: string) {
+    this.goalServ.viewGoal(id);
   }
 
 }

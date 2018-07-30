@@ -7,12 +7,35 @@ import { Router } from '@angular/router';
 })
 export class GoalService {
 
+  baseUrl = 'http://localhost:8080/project2/api/';
   constructor(private http: HttpClient, private router: Router) { }
 
-  public viewGoal(goal: Goal) {
-    this.http.get('/api/goal/' + goal.id).subscribe(
-      (res) => {
-        this.router.navigate(['goal', goal.id]);
+  public viewGoal(id: string) {
+    this.http.get(this.baseUrl + 'goal/' + id)
+        .subscribe(
+          (res) => {
+            this.router.navigate(['goal/' + id]);
       });
+  }
+
+  public getAllGoals() {
+    this.http.get<Goal[]>(this.baseUrl + 'goals').subscribe(
+      (res) => {
+        this.router.navigate(['goals']);
+      });
+  }
+
+  public updateGoal(goal: Goal) {
+    this.http.put<Goal>(this.baseUrl + 'goal/' + goal.id, goal);
+  }
+
+  public deleteGoal(goal: Goal): string {
+    const numOfRows = this.http.delete<Goal>(this.baseUrl + 'goal/' + goal.id);
+    return 'Deleted num of rows: ' + numOfRows;
+  }
+
+  public createGoal(goal: Goal): string {
+    this.http.post<Goal>(this.baseUrl + 'goal', goal);
+    return 'Dreated Goal: ' + goal.id + ' ' + goal.name;
   }
 }
