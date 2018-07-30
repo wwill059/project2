@@ -9,8 +9,8 @@
 				<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 				<!-- Datasource Information -->
 				<property name="hibernate.connection.url">jdbc:oracle:thin:@waynezackproject2.clnqlvccw020.us-east-2.rds.amazonaws.com</property>
-				<property name="hibernate.connection.username">BANK_DB</property>
-				<property name="hibernate.connection.password">PASSWORD</property>
+				<property name="hibernate.connection.username">wzp2</property>
+				<property name="hibernate.connection.password">password7</property>
 				
 				<property name="hibernate.connection.pool_size">10</property>
 				
