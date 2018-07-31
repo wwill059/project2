@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Goal } from '../goal';
+import { User } from '../user';
 import { GoalService } from '../goal.service';
 @Component({
   selector: 'app-home',
@@ -8,7 +9,8 @@ import { GoalService } from '../goal.service';
 })
 export class HomeComponent implements OnInit {
 
-  goals: Goal[];
+  @Input()goals: Goal[];
+  @Input()user: User;
   constructor(private goalServ: GoalService) { }
 
   ngOnInit() {

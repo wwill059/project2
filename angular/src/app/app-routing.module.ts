@@ -8,13 +8,14 @@ const routes: Route[] = [
     { path: 'login', component: LoginComponent},
     { path: 'home', component: HomeComponent },
     { path: 'goal/:id', component: GoalComponent},
-    { path: '', component: LoginComponent, pathMatch: 'full'},
+    { path: '', redirectTo: '/login' , pathMatch: 'full'},
 ];
 
 @NgModule({
     imports: [
         RouterModule.forRoot(routes)
-    ]
+    ],
+    exports: [RouterModule]
 })
 
 export class AppR { }

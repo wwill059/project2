@@ -2,23 +2,23 @@
   <div class="container valign-wrapper">
     <div class="row valign">
       <div class="col s12 vailgn">
-        <div class="card z-depth-3 light-blue darken-2">
+        <div class="card z-depth-3 light-blue lighten-4">
           <div class="card-content">
             <span class="card-title center-align">Login</span>
             <div class="input-field col s12">
-              <i class="material-icons prefix">add_user</i>
-              <input type="text" name="username" id="username">
+              <i class="material-icons prefix">account_circle</i>
+              <input #user type="text" name="username" id="username">
               <label for="username">Enter Username</label>
             </div>
             <div class="input-field col s12">
               <i class="material-icons prefix">lock</i>
-              <input type="password" name="password" id="password">
+              <input #pass type="password" name="password" id="password">
               <label for="username">Enter Password</label>
             </div>
             <br />
             <div class="row">
               <div class="col s12 center-align">
-                <a mat-raised-button routerLink="home" color="accent">Log In</a>
+                <a mat-raised-button color="accent" (click)="auth(user.value, pass.value)">Log In</a>
               </div>
             </div>
           </div>
