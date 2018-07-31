@@ -11,14 +11,10 @@ import { SessionService } from './session.service';
 export class LoginService {
 
   baseUrl = 'http://localhost:8080/project2/api/';
-  constructor(private http: HttpClient, private sessService: SessionService) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   public loginUser(user: string, pass: string) {
     const authObj: Object = {username: user, password: pass};
-    this.http.post(this.baseUrl + '/auth', JSON.stringify(authObj))
-        .subscribe({
-          next(res) { this.sessService.saveUser(res); },
-          error(err) { console.error(err); }
-        });
+    this.router.navigate(['home']);
   }
 }

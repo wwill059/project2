@@ -5,6 +5,6 @@ export class Goal {
     name: string;
     description?: string;
     isCompleted?: boolean;
-    completeDate?: Date;
+    completeDate?: string;
     tasks?: Task[];
 }

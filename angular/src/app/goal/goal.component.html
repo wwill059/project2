@@ -1,14 +1,32 @@
-<mat-card>
+<mat-card [hidden]="isCompleted">
   <mat-card-header>
-    <h1>{{goal.title}}</h1>
+    <h5>{{goal.name}}</h5>
+    <br />
+    <h5 class="align-right">{{goal.completeDate}} </h5>
   </mat-card-header>
-  <mat-card-content>
-    <div *ngFor="let task of tasks">
-      <h1>{{task.title}}</h1>
-      <h3>{{task.dueDate}}</h3>
-      <button mat-raised-btn (click)="completeTask()">Completed Task</button>
-      <button mat-raised-btn (click)="extendTask()">Extend Task Due Date</button>
-      <button mat-raised-btn (click)="deleteTask()">Delete Task</button>
+  <mat-card-content class="container">
+      <div class="container" *ngFor="let task of goal.tasks">
+          <div class="row">
+            <mat-card>
+              <mat-card-header>
+                <h1>{{task.name}}</h1>
+                <h3>{{task.dueDate}}</h3>
+              </mat-card-header>
+              <mat-card-content>
+                <button mat-raised-btn color="primary" (click)="completeTask()">Completed Task</button>
+                <button mat-raised-btn color="accent" (click)="extendTask()">Extend Task Due Date</button>
+                <button mat-raised-btn (click)="deleteTask()">Delete Task</button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+    <div class="row">
+      <button mat-raised-btn color="primary" 
+      (click)="completeGoal()" class="col m1"><i class="material-icons">done</i></button>
+      <button mat-raised-btn color="accent" (click)="incompleteGoal()" class="col offset-m2 mm1"><i class="material-icons">clear</i></button>
     </div>
   </mat-card-content>
+  <!-- <mat-card-content>
+    
+  </mat-card-content> -->
 </mat-card>

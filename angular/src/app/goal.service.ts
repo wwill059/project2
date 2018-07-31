@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Goal } from './goal';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { DATA } from './data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoalService {
+
 
   baseUrl = 'http://localhost:8080/project2/api/';
   constructor(private http: HttpClient, private router: Router) { }
@@ -20,8 +22,8 @@ export class GoalService {
       });
   }
 
-  public getAllGoals(): Observable<Goal[]> {
-    return this.http.get<Goal[]>(this.baseUrl + 'goals');
+  public getAllGoals(): Goal[] {
+    return DATA;
   }
 
   public updateGoal(goal: Goal) {
