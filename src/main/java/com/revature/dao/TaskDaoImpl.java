@@ -2,10 +2,14 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.pojos.goals.Goal;
 import com.revature.pojos.goals.Task;
 
 
@@ -19,33 +23,58 @@ public class TaskDaoImpl implements TaskDao {
 	
 
 	@Override
-	public Task getTask(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public Task getTask(int id) {
+		Session sess = sessionFactory.getCurrentSession();
+		
+		
+		return (Task)sess.get(Task.class, id);
 	}
 
 	@Override
-	public boolean putTask(Task user) {
+	public Task putTask(Task task) {
 		// TODO Auto-generated method stub
-		return false;
+	Session sess = sessionFactory.getCurrentSession();
+		
+		Transaction tx = sess.beginTransaction();
+		
+		sess.save(task);
+		
+		tx.commit();
+		
+		return task;
 	}
 
 	@Override
-	public boolean deleteTask(Task user) {
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteTask(Task task) {
+		Session sess = sessionFactory.getCurrentSession();
+		
+Transaction tx = sess.beginTransaction();
+		
+		sess.delete(task);
+		
+		tx.commit();
+		
 	}
 
 	@Override
-	public boolean updateTask(Task user) {
-		// TODO Auto-generated method stub
-		return false;
+	public void updateTask(Task task) {
+		Session sess = sessionFactory.getCurrentSession();
+
+		Transaction tx = sess.beginTransaction();
+				
+				sess.update(task);
+				
+				tx.commit();
+	
 	}
 
 	@Override
 	public List<Task> getAllTasks() {
-		// TODO Auto-generated method stub
-		return null;
+Session sess = sessionFactory.getCurrentSession();
+		
+		Criteria criteria = sess.createCriteria(Task.class);
+		
+		return (List<Task>)criteria.list();
 	}
 
 }

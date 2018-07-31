@@ -6,13 +6,13 @@ import com.revature.pojos.user.Account;
 
 public interface UserDao {
 
-	Account getUser(String name);
+	Account getUser(int id);
 	
-	boolean putUser(Account user);
+	Account putUser(Account user);
 	
-	boolean deleteUser(Account user);
+	void deleteUser(Account user);
 	
-	boolean updateUser(Account user);
+	void updateUser(Account user);
 	
 	List<Account> getAllUsers();
 	

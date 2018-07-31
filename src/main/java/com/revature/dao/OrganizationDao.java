@@ -8,13 +8,13 @@ import com.revature.pojos.user.Organization;
 public interface OrganizationDao {
 
 	
-Organization getOrganization(String name);
+Organization getOrganization(int id);
 	
-	boolean putOrganization(Organization org);
+	Organization putOrganization(Organization org);
 	
-	boolean deleteOrganization(Organization org);
+	void deleteOrganization(Organization org);
 	
-	boolean updateOrganization(Organization org);
+	void updateOrganization(Organization org);
 	
 	List<Organization> getAllOrganizations();
 }

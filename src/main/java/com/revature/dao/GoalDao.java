@@ -6,13 +6,13 @@ import com.revature.pojos.goals.Goal;
 
 public interface GoalDao {
 
-	Goal getGoal(String name);
+	Goal getGoal(int id);
 	
-	boolean putGoal(Goal user);
+	Goal putGoal(Goal user);
 	
-	boolean deleteGoal(Goal user);
+	void deleteGoal(Goal user);
 	
-	boolean updateGoal(Goal user);
+	void updateGoal(Goal user);
 	
 	List<Goal> getAllGoals();
 }

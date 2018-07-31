@@ -6,13 +6,13 @@ import com.revature.pojos.goals.Task;
 
 public interface TaskDao {
 
-	Task getTask(String name);
+	Task getTask(int id);
 	
-	boolean putTask(Task user);
+	Task putTask(Task task);
 	
-	boolean deleteTask(Task user);
+	void deleteTask(Task task);
 	
-	boolean updateTask(Task user);
+	void updateTask(Task task);
 	
 	List<Task> getAllTasks();
 }

@@ -2,10 +2,14 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.pojos.user.Account;
 import com.revature.pojos.user.Organization;
 
 
@@ -17,33 +21,55 @@ public class OrganizationDaoImpl implements OrganizationDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public Organization getOrganization(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public Organization getOrganization(int id) {
+Session sess = sessionFactory.getCurrentSession();
+		
+		
+		return (Organization)sess.get(Organization.class, id);
 	}
 
 	@Override
-	public boolean putOrganization(Organization org) {
-		// TODO Auto-generated method stub
-		return false;
+	public Organization putOrganization(Organization org) {
+Session sess = sessionFactory.getCurrentSession();
+		
+		Transaction tx = sess.beginTransaction();
+		
+		sess.save(org);
+		
+		tx.commit();
+		
+		return org;
 	}
 
 	@Override
-	public boolean deleteOrganization(Organization org) {
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteOrganization(Organization org) {
+Session sess = sessionFactory.getCurrentSession();
+		
+		Transaction tx = sess.beginTransaction();
+				
+				sess.delete(org);
+				
+				tx.commit();
 	}
 
 	@Override
-	public boolean updateOrganization(Organization org) {
-		// TODO Auto-generated method stub
-		return false;
+	public void updateOrganization(Organization org) {
+		Session sess = sessionFactory.getCurrentSession();
+
+		Transaction tx = sess.beginTransaction();
+				
+				sess.update(org);
+				
+				tx.commit();
 	}
 
 	@Override
 	public List<Organization> getAllOrganizations() {
-		// TODO Auto-generated method stub
-		return null;
+Session sess = sessionFactory.getCurrentSession();
+		
+		Criteria criteria = sess.createCriteria(Organization.class);
+		
+		return (List<Organization>)criteria.list();
 	}
 
 }
