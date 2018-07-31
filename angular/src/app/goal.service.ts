@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Goal } from './goal';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,11 +20,8 @@ export class GoalService {
       });
   }
 
-  public getAllGoals() {
-    this.http.get<Goal[]>(this.baseUrl + 'goals').subscribe(
-      (res) => {
-        this.router.navigate(['goals']);
-      });
+  public getAllGoals(): Observable<Goal[]> {
+    return this.http.get<Goal[]>(this.baseUrl + 'goals');
   }
 
   public updateGoal(goal: Goal) {
